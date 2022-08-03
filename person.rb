@@ -2,7 +2,7 @@ require_relative './nameable'
 require_relative './decorator'
 
 class Person < Nameable
-  attr_reader :id, :rentals
+  attr_accessor :id, :rentals
   attr_accessor :name, :age
 
   def initialize(age, name = 'Unknown', parent_permission: true)
@@ -26,8 +26,8 @@ class Person < Nameable
     of_age? || @parent_permission
   end
 
-  def add_rental(date, person)
-    Rental.new(date, person, self)
+  def add_rental(date, book)
+    Rental.new(date, book, self)
   end
 
   private :of_age?
