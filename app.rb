@@ -92,3 +92,69 @@ class App
       key += 1
     end
   end
+
+  def all_books
+    key = 1
+    puts
+    puts 'Books'.upcase
+    puts
+    puts 'No book yet! Choose option 4 to add a book ' if @books.empty?
+    @books.each do |book|
+      puts "#{key} - #{book.title} by #{book.author}"
+      key += 1
+    end
+  end
+
+  def create_teacher
+    age = -1
+    print 'Enter Age: '
+    while age <= 0
+      age = gets.chomp.to_i
+      print 'Enter valid age for Teacher: ' if age <= 0
+    end
+
+    print 'Enter Name: '
+    name = gets.chomp.strip.capitalize
+
+    print 'Enter Specialization: '
+    specialization = gets.chomp.strip.capitalize
+
+    @people << Teacher.new(age, name, specialization)
+    puts ' Teacher was created successfuly! '
+  end
+
+  def create_student
+    print 'Enter Age: '
+    print 'Age: '
+    age = gets.chomp
+
+    print 'Enter Name: '
+    name = gets.chomp.strip.capitalize
+
+    print 'Does student have parent permission? (Y/N): '
+    permission = gets.chomp.strip.upcase
+
+    case permission
+    when 'Y', 'YES'
+      permission = true
+    when 'N', 'NO'
+      permission = false
+    end
+    @people << Student.new(age, name, parent_permission: permission)
+    puts
+    puts 'Student was created successfuly!'
+    puts
+  end
+
+  def create_book
+    print 'Enter Title: '
+    title = gets.chomp.strip.capitalize
+
+    print 'Enter Author: '
+    author = gets.chomp.strip.capitalize
+
+    @books << Book.new(title, author)
+    puts
+    puts 'Book was created successfully!'
+    puts
+  end
