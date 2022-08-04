@@ -38,3 +38,57 @@ class App
     puts ' Closing Application '
     puts '      Good Bye!      '
   end
+
+  def choice_options(option)
+    case option
+    when 1
+      all_books
+    when 2
+      all_people
+    when 3
+      create_person
+    when 4
+      create_book
+    when 5
+      create_rental
+    when 6
+      list_rentals
+    when 7
+      nil
+    else
+      puts 'Invalid option! '
+      puts 'Please enter a valid option from the following: '
+      menu_options
+    end
+  end
+
+  def create_person
+    entry = nil
+    print 'Choose option 1 to create a Student or option 2 for a Teacher: '
+    until [1, 2].include?(entry)
+      entry = gets.chomp.strip.to_i
+      puts
+      puts 'Choose option 1 for Student or option 2 for Teacher' unless [1, 2].include?(entry)
+    end
+    case entry
+    when 1
+      create_student
+    when 2
+      create_teacher
+    end
+  end
+
+  def all_people
+    key = 1
+    puts
+    puts 'People'.upcase
+    puts
+    puts 'No people yet! Choose option 3 to add a person ' if @people.empty?
+    @people.each do |person|
+      print "#{key} - [#{person.class.name} ID]: #{person.id} Age: #{person.age} Name: #{person.name} "
+      print "Parent Permission: #{person.parent_permission}" if person.is_a?(Student)
+      print "Specialization: #{person.specialization}" if person.is_a?(Teacher)
+      puts
+      key += 1
+    end
+  end
