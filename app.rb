@@ -158,3 +158,22 @@ class App
     puts 'Book was created successfully!'
     puts
   end
+
+  def create_rental
+    all_books
+    print 'Select the key of the book: '
+    book_select = gets.chomp.chomp.to_i
+    all_people
+    print 'Select the key of the person: '
+    person_select = gets.chomp.chomp.to_i
+
+    print 'Select the date: (Year/Month/Day): '
+    date = gets.chomp.strip
+    book = @books[book_select]
+    person = @people[person_select]
+    new_rental = Rental.new(date, book, person)
+    @all_rentals.push(new_rental)
+    puts
+    puts 'Rental was created successfuly!'
+    puts
+  end
