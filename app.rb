@@ -177,3 +177,21 @@ class App
     puts 'Rental was created successfuly!'
     puts
   end
+
+  def list_rentals
+    puts
+    all_people
+    puts 'Choose person ID: '
+    entry = gets.chomp.to_i
+
+    puts 'Rentals'.upcase
+    puts
+    @people.each do |person|
+      next unless person.id == entry
+
+      @all_rentals.each do |rental|
+        puts "Rental date: #{rental.date} - #{rental.book} by #{rental.person}"
+      end
+    end
+  end
+end
