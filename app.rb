@@ -7,7 +7,7 @@ require './teacher'
 
 # rubocop:disable Metrics/ClassLength, Metrics/CyclomaticComplexity
 
-class Apps
+class App
   def initialize
     @people = []
     @books = []
