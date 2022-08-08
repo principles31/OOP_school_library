@@ -5,14 +5,18 @@ class CreateStudent
     @people = people
   end
 
-  def create_student
+  def create_student_age
     print 'Enter Age: '
     print 'Age: '
-    age = gets.chomp
+    gets.chomp
+  end
 
+  def create_student_name
     print 'Enter Name: '
-    name = gets.chomp.strip.capitalize
+    gets.chomp.strip.capitalize
+  end
 
+  def create_student_permission
     print 'Does student have parent permission? (Y/N): '
     permission = gets.chomp.strip.upcase
 
@@ -20,11 +24,13 @@ class CreateStudent
     when 'Y', 'YES'
       permission = true
     when 'N', 'NO'
-      permission = false
+      false
+
     end
-    @people << Student.new(age, name, parent_permission: permission)
-    puts
-    puts 'Student was created successfuly!'
-    puts
+    permission
   end
+
+  @people << Student.new(create_teacher_age, create_student_name, parent_permission: create_student_permission)
+  puts
+  puts 'Student was created successfuly!'
 end

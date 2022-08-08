@@ -5,21 +5,30 @@ class CreateTeacher
     @people = people
   end
 
-  def create_teacher
+  # Create Teacher age
+  def create_teacher_age
     age = -1
     print 'Enter Age: '
     while age <= 0
       age = gets.chomp.to_i
       print 'Enter valid age for Teacher: ' if age <= 0
+      age
     end
-
-    print 'Enter Name: '
-    name = gets.chomp.strip.capitalize
-
-    print 'Enter Specialization: '
-    specialization = gets.chomp.strip.capitalize
-
-    @people << Teacher.new(age, name, specialization)
-    puts ' Teacher was created successfuly! '
+    age
   end
+
+  # Create Teacher name
+  def create_teacher_name
+    print 'Enter Name: '
+    gets.chomp.strip.capitalize
+  end
+
+  # Create Teacher specialization
+  def create_teacher_specialization
+    print 'Enter Specialization: '
+    gets.chomp.strip.capitalize
+  end
+
+  @people << Teacher.new(create_teacher_age, create_teacher_name, create_teacher_specialization)
+  puts ' Teacher was created successfuly! '
 end
